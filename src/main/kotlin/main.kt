@@ -1,48 +1,53 @@
 fun main() {
-
     println("Bem vindo ao Bytebank")
-    val contaLemoel = Account(number = 1000, holder = "Josi")
-    contaLemoel.deposit(11.2)
-    println(contaLemoel.holder)
-    println(contaLemoel.number)
+    val lemoel = Funcionario(
+        nome = "lemoel",
+        cpf = "84593890144",
+        salario = 1000.0,
+    )
 
-    val contaFran = Account("Fran", 1001);
-    contaFran.deposit(10.2)
+    println("Nome ${lemoel.nome}")
+    println("Cpf ${lemoel.cpf}")
+    println("Salario ${lemoel.salario}")
+    println("bonificacao ${lemoel.bonificacao} ")
 
-    val contaJoao = Account("Joao", 1002);
-    contaFran.deposit(10.2)
+    val gerente = Gerente(
+        nome = "Josiane",
+        cpf = "222.222.222-22",
+        salario = 2000.0,
+        senha = 123,
+    )
 
-    println("Titular conta Joaoa: ${contaJoao.holder}")
+    println("Nome ${gerente.nome}")
+    println("Cpf ${gerente.cpf}")
+    println("Salario ${gerente.salario}")
+    println("bonificacao ${gerente.bonificacao} ")
 
-}
-
-class Account(
-    var holder: String,
-    val number: Int
-) {
-
-    var balance = 0.0
-        private set
-
-    fun deposit(amount: Double) {
-        if (amount > 0) {
-            this.balance += amount
-        }
+    if (gerente.autentica(123)) {
+        println("Autenticou com sucesso")
+    } else {
+        println("Não autenticou")
     }
 
-    fun withdrawal(amount: Double) {
-        if (balance >= amount) {
-            this.balance -= amount
-        }
+    val diretor = Diretor(
+        nome = "Gui",
+        cpf = "333.333.333-33",
+        salario = 4000.0,
+        senha = 4000,
+        plr = 200.0,
+    )
+
+    println("Nome ${diretor.nome}")
+    println("Cpf ${diretor.cpf}")
+    println("Salario ${diretor.salario}")
+    println("bonificacao ${diretor.bonificacao} ")
+    println("PLR ${diretor.plr}")
+
+    if (diretor.autentica(3000)) {
+        println("Autenticou com sucesso")
+    } else {
+        println("Não autenticou")
     }
 
-    fun transfer(amount: Double, destination: Account): Boolean {
-        if (balance >= amount) {
-            balance -= amount
-            destination.deposit(amount)
-            return true
-        }
-        return false
-    }
 
 }
