@@ -1,6 +1,11 @@
-fun main() {
-    println("Bem vindo ao Bytebank")
-    val lemoel = Funcionario(
+import br.com.bytebank.modelo.Analista
+import br.com.bytebank.modelo.CalculadoraBonificacao
+import br.com.bytebank.modelo.Diretor
+import br.com.bytebank.modelo.Gerente
+
+public fun testaFuncionarios() {
+
+    val lemoel = Analista (
         nome = "lemoel",
         cpf = "84593890144",
         salario = 1000.0,
@@ -49,5 +54,18 @@ fun main() {
         println("Não autenticou")
     }
 
+    val maria = Analista(
+        nome = "Maria",
+        cpf = "444.444.444-44",
+        salario = 3000.0,
+    )
 
+    val calculadora = CalculadoraBonificacao()
+
+    calculadora.registra(lemoel)
+    calculadora.registra(gerente)
+    calculadora.registra(diretor)
+    calculadora.registra(maria)
+
+    println("total de bonificação ${calculadora.total}")
 }
